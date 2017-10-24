@@ -18,4 +18,4 @@ Input Korean Sentence at http://yourIPAddress:PORT(default:8000)/app/
 
 Then, It will take KONLPY process and Do morphological decomposition.
 
-Finally, The original text, date time, and analysis result are saved in DB.
+Finally, The original text, date time, and analysis result are saved in DB. and You can look items on your monitor.

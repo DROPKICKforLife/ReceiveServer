@@ -10,7 +10,6 @@ from konlpy.tag import Twitter
 
 def twitter(msg):
     t = Twitter()
-    print("초기화")
     data = t.pos(msg,norm=True,stem=True)
     return data
 @csrf_exempt

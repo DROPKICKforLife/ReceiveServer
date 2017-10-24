@@ -22,6 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^rest-api/',include('rest_framework.urls')),
     url(r'^rest-swagger/',schema_view),
-    url(r'^admin/',include(admin.site.urls)),
     url(r'^app/',include('app.urls')),
 ]

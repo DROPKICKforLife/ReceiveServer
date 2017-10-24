@@ -6,7 +6,13 @@ from urllib.request import urlopen, Request
 from urllib.parse import urlencode
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from konlpy.tag import Twitter
 
+def twitter(msg):
+    t = Twitter()
+    print("초기화")
+    data = t.pos(msg,norm=True,stem=True)
+    return data
 @csrf_exempt
 def test(request):
     post_data = urlencode({"send":"hi"})
@@ -17,13 +23,19 @@ def test(request):
 @csrf_exempt
 def func(request):
     if request.method == "POST":
-
-        print(request.POST['send'])
-        Receive(rec_text=request.POST['send'],rec_date=timezone.now()).save()
+        inputData = request.POST['send']
+        print(inputData)
+        try:
+            kon = twitter(inputData)
+        except:
+            print("오류")
+        else:
+            print(kon)
+        Receive(rec_text=inputData,rec_date=timezone.now(),rec_konlpy=kon).save()
         lists= Receive.objects.all()
         txt = ""
         for i in lists:
-            txt += str(i.id) + " : " + i.rec_text + " - " +str(i.rec_date) + "\n"
+            txt += str(i.id) + " : " + i.rec_text + " - " +str(i.rec_date)+" // " +str(i.rec_konlpy)+ "\n"
         print(txt)
         context = {'lists' : txt}
         return HttpResponse(context['lists'])

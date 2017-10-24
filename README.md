@@ -11,7 +11,11 @@ Made of Django Framework (PYTHON3)
   2. run "python3 manage.py runserver"
 
 #Process
+
 Input Korean Sentence at http://yourIPAddress:PORT(default:8000)/app/  
+
 ##[method - POST, req - 'send' Header]##
+
 Then, It will take KONLPY process and Do morphological decomposition.
+
 Finally, The original text, date time, and analysis result are saved in DB.
